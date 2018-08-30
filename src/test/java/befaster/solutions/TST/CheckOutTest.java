@@ -135,7 +135,12 @@ public class CheckOutTest {
     }
 
     @Test
-    public void testXYZ() {
+    public void testZZZ() {
         assertThat(sol.checkout("ZZZ"), equalTo(45));
+    }
+
+    @Test
+    public void testXYZ() {
+        assertThat(sol.checkout("XYZ"), equalTo(45));
     }
 }
