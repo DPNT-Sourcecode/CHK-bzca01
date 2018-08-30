@@ -127,74 +127,15 @@ public class CheckoutSolution {
             long countOfProductY = countProduct(skus, PRODUCT_Y);
             long countOfProductZ = countProduct(skus, PRODUCT_Z);
 
-            /*
-    +------+-------+------------------------+
-            | Item | Price | Special offers         |
-            +------+-------+------------------------+
-            | A    | 50    | 3A for 130, 5A for 200 |
-            | B    | 30    | 2B for 45              |
-            | C    | 20    |                        |
-            | D    | 15    |                        |
-            | E    | 40    | 2E get one B free      |
-            | F    | 10    | 2F get one F free      |
-            | G    | 20    |                        |
-            | H    | 10    | 5H for 45, 10H for 80  |
-            | I    | 35    |                        |
-            | J    | 60    |                        |
-            | K    | 80    | 2K for 150             |
-            | L    | 90    |                        |
-            | M    | 15    |                        |
-            | N    | 40    | 3N get one M free      |
-            | O    | 10    |                        |
-            | P    | 50    | 5P for 200             |
-            | Q    | 30    | 3Q for 80              |
-            | R    | 50    | 3R get one Q free      |
-            | S    | 30    |                        |
-            | T    | 20    |                        |
-            | U    | 40    | 3U get one U free      |
-            | V    | 50    | 2V for 90, 3V for 130  |
-            | W    | 20    |                        |
-            | X    | 90    |                        |
-            | Y    | 10    |                        |
-            | Z    | 50    |                        |
-            +------+-------+------------------------+
-*/
 
-
-            //////////
-            // Free Gifts
-//            long countFreeGifts = countOfProductE / 2;
-//            if( countFreeGifts > 0 ){
-//                countOfProductB = countOfProductB - countFreeGifts;
-//            }
             countOfProductB = processFreeGift( countOfProductE, 2, countOfProductB);
             countOfProductM = processFreeGift( countOfProductN, 3, countOfProductM);
             countOfProductQ = processFreeGift( countOfProductR, 3, countOfProductQ);
 
-//            countFreeGifts = countOfProductN / 3;
-//            if( countFreeGifts > 0 ){
-//                countOfProductM = countOfProductM - countFreeGifts;
-//            }
-//
-//            countFreeGifts = countOfProductR / 3;
-//            if( countFreeGifts > 0 ){
-//                countOfProductQ = countOfProductQ - countFreeGifts;
-//            }
-
-            ///////////
-            // BOG OFFS
-//            countFreeGifts = countOfProductF / 3;
-//            if( countFreeGifts > 0 ){
-//                countOfProductF = countOfProductF - countFreeGifts;
-//            }
-//
-//            countFreeGifts = countOfProductU / 4;
-//            if( countFreeGifts > 0 ){
-//                countOfProductU = countOfProductU - countFreeGifts;
-//            }
-//
             countOfProductF = processBOGOff(countOfProductF, 2 );
             countOfProductU = processBOGOff(countOfProductU, 3 );
+
+
 
             checkoutTotal = priceProduct(countOfProductA, UNIT_PRICE_A, MULTIBUYS_A )
                     + priceProduct(countOfProductB, UNIT_PRICE_B, MULTIBUYS_B )
@@ -224,6 +165,12 @@ public class CheckoutSolution {
                     + priceProduct(countOfProductZ, UNIT_PRICE_Z, NO_MULTIBUYS )
                     ;
 
+            ////////////////////////////
+            // process group discount
+            long groupDiscounts = (countOfProductS + countOfProductT + countOfProductX + countOfProductY + countOfProductZ) / 3;
+            if( groupDiscounts > 0 ){
+                checkoutTotal = checkoutTotal - ((int)(groupDiscounts*45));
+            }
         }
 
         return checkoutTotal;
@@ -244,7 +191,6 @@ public class CheckoutSolution {
         }
         return prodA;
     }
-
 
     public long countProduct( String skus, final int productId ){
         return skus.chars()
