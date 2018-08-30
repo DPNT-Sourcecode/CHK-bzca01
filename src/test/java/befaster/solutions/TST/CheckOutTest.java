@@ -42,16 +42,16 @@ public class CheckOutTest {
 
     @Test
     public void testMultiPriceBelowThreshold() {
-        assertThat(sol.priceProduct(2, 10, 3, 5), equalTo(0));
+        assertThat(sol.priceProduct(2, 10, 3, 15), equalTo(20));
     }
 
     @Test
     public void testMultiPriceEqualThreshold() {
-        assertThat(sol.priceProduct(3, 10, 3, 5), equalTo(1));
+        assertThat(sol.priceProduct(3, 10, 3, 15), equalTo(15));
     }
 
     @Test
     public void testMultiPriceOneOverThreshold() {
-        assertThat(sol.priceProduct(4, 10, 3, 5), equalTo(1));
+        assertThat(sol.priceProduct(4, 10, 3, 15), equalTo(25));
     }
 }
