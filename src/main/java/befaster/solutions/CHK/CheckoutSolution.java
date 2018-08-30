@@ -68,9 +68,10 @@ public class CheckoutSolution {
         if( count > 0 ){
             if( multiBuyNumber != null ){
                 int numMultiBuys = iCount / multiBuyNumber.intValue();
-                int nonQualifying = iCount % multiBuyNumber.intValue();
+                //int nonQualifying = iCount % multiBuyNumber.intValue();
 
-                price = Integer.valueOf((numMultiBuys*multiBuyPrice.intValue()) + (nonQualifying+unitPrice.intValue()));
+                price = Integer.valueOf(numMultiBuys);
+                //price = Integer.valueOf((numMultiBuys*multiBuyPrice.intValue()) + (nonQualifying+unitPrice.intValue()));
             }
             else{
                 price = Integer.valueOf( iCount * unitPrice.intValue() );
