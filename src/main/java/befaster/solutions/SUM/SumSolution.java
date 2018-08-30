@@ -12,8 +12,8 @@ public class SumSolution {
 
     public Integer sum(Integer i1, Integer i2 ){
 
-        validateInteger(0, Optional.of(i1) );
-        validateInteger(1, Optional.of(i2) );
+        validateInteger(0, Optional.ofNullable(i1) );
+        validateInteger(1, Optional.ofNullable(i2) );
 
         return new Integer( i1.intValue() + i2.intValue() );
     }
