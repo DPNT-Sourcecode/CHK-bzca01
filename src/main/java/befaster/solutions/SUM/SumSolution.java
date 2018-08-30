@@ -11,10 +11,14 @@ public class SumSolution {
     }
 
     public Integer sum(Integer i1, Integer i2 ){
-        validInteger(0, i1 );
+
+        validateInteger(0, Optional.of(i1) );
+        validateInteger(1, Optional.of(i2) );
+
+        return new Integer( i1.intValue() + i2.intValue() );
     }
 
-    private void validInteger( int index, Optional<Integer> optInt ){
+    private void validateInteger( int index, Optional<Integer> optInt ){
         if( !optInt.isPresent() ){
             throw new IllegalArgumentException( String.format("parameter %d cannot be null", index ));
         }
