@@ -193,8 +193,8 @@ public class CheckoutSolution {
 //                countOfProductU = countOfProductU - countFreeGifts;
 //            }
 //
-            countOfProductF = processBOGOff(countOfProductF, 3 );
-            countOfProductU = processBOGOff(countOfProductU, 4 );
+            countOfProductF = processBOGOff(countOfProductF, 2 );
+            countOfProductU = processBOGOff(countOfProductU, 3 );
 
             checkoutTotal = priceProduct(countOfProductA, UNIT_PRICE_A, MULTIBUYS_A )
                     + priceProduct(countOfProductB, UNIT_PRICE_B, MULTIBUYS_B )
@@ -238,7 +238,7 @@ public class CheckoutSolution {
     }
 
     private long processBOGOff( long prodA, long threshold ){
-        long countFreeGifts = prodA / threshold;
+        long countFreeGifts = prodA / (threshold+1);
         if( countFreeGifts > 0 ){
             prodA = prodA - countFreeGifts;
         }
