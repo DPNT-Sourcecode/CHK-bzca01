@@ -202,18 +202,19 @@ public class CheckoutSolution {
             long groupDiscounts = (countOfProductS + countOfProductT + countOfProductX + countOfProductY + countOfProductZ) / 3;
             if( groupDiscounts > 0 ){
                 long groupDiscountsTotal = groupDiscounts;
+                long carriedForward = 0;
+
                 // z
                 if( groupDiscounts >0 ){
-                    if( countOfProductZ <= groupDiscounts ){
-                        checkoutTotal = checkoutTotal - ((int)(countOfProductZ*UNIT_PRICE_Z));
-                        groupDiscounts = groupDiscounts - countOfProductZ;
+
+                    long tmp = countOfProductZ / 3;
+                    if( tmp > 0 ){
+                        checkoutTotal = checkoutTotal - ((int)(tmp*3*UNIT_PRICE_Z));
+                        groupDiscounts = groupDiscounts - tmp;
                     }
-                    else{
-                        checkoutTotal = checkoutTotal - ((int)(groupDiscounts*UNIT_PRICE_Z));
-                        groupDiscounts = 0;
-                    }
+                    carriedForward = countOfProductZ % 3;
                 }
-                // s
+                // s t y
                 if( groupDiscounts >0 ){
                     if( countOfProductS <= groupDiscounts ){
                         checkoutTotal = checkoutTotal - ((int)(countOfProductS*UNIT_PRICE_S));
@@ -221,28 +222,6 @@ public class CheckoutSolution {
                     }
                     else{
                         checkoutTotal = checkoutTotal - ((int)(groupDiscounts*UNIT_PRICE_S));
-                        groupDiscounts = 0;
-                    }
-                }
-                // t
-                if( groupDiscounts >0 ){
-                    if( countOfProductT <= groupDiscounts ){
-                        checkoutTotal = checkoutTotal - ((int)(countOfProductT*UNIT_PRICE_T));
-                        groupDiscounts = groupDiscounts - countOfProductT;
-                    }
-                    else{
-                        checkoutTotal = checkoutTotal - ((int)(groupDiscounts*UNIT_PRICE_T));
-                        groupDiscounts = 0;
-                    }
-                }
-                // y
-                if( groupDiscounts >0 ){
-                    if( countOfProductY <= groupDiscounts ){
-                        checkoutTotal = checkoutTotal - ((int)(countOfProductY*UNIT_PRICE_Y));
-                        groupDiscounts = groupDiscounts - countOfProductY;
-                    }
-                    else{
-                        checkoutTotal = checkoutTotal - ((int)(groupDiscounts*UNIT_PRICE_Y));
                         groupDiscounts = 0;
                     }
                 }
@@ -259,7 +238,7 @@ public class CheckoutSolution {
                 }
 
 
-                checkoutTotal = checkoutTotal - ((int)(groupDiscountsTotal*45));
+                checkoutTotal = checkoutTotal + ((int)(groupDiscountsTotal*45));
             }
         }
 
