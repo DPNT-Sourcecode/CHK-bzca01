@@ -60,7 +60,7 @@ public class CheckoutSolution {
                 .count();
     }
 
-    private Integer priceProduct( long count , Integer unitPrice, Integer multiBuyNumber, Integer multiBuyPrice ){
+    public Integer priceProduct( long count , Integer unitPrice, Integer multiBuyNumber, Integer multiBuyPrice ){
         Integer price = Integer.valueOf(0);
 
         int iCount = (int)count;

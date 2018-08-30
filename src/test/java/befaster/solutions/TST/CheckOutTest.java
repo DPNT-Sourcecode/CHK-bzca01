@@ -21,7 +21,17 @@ public class CheckOutTest {
 //    }
 
     @Test
-    public void testCountProduct() {
-        assertThat(sol.countProduct("ABCD", 'A'), equalTo(1));
+    public void testCountProductA() {
+        assertThat(sol.countProduct("ABCD", 'A'), equalTo(1L));
+    }
+
+    @Test
+    public void testCountProductB() {
+        assertThat(sol.countProduct("ABBB", 'B'), equalTo(3L));
+    }
+
+    @Test
+    public void testUnitPrice() {
+        assertThat(sol.priceProduct(1, 10, null, 1), equalTo(10));
     }
 }
