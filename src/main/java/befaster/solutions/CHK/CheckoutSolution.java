@@ -92,8 +92,8 @@ public class CheckoutSolution {
                     int key = intKeys[i];
                     int numMultiBuys = iCount / key;
                     if( numMultiBuys > 0 ) {
-                        price = price.intValue() + multiBuys.get(key);
-                        iCount = iCount - numMultiBuys;
+                        price = price.intValue() + (multiBuys.get(key)*numMultiBuys);
+                        iCount = iCount % key;
                     }
                 }
 
