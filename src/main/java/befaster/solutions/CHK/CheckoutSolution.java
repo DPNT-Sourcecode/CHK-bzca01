@@ -19,10 +19,10 @@ public class CheckoutSolution {
     private static final int MULTIBUY_PRICE_A = 130;
     private static final int MULTIBUY_PRICE_B = 45;
     private static final int MULTIBUY_PRICE_C = 20;
-    private static final int MULTIBUY_PRICE_D = 12;
+    private static final int MULTIBUY_PRICE_D = 15;
 
-    private static final Integer MULTIBUY_THRESHOLD_A = 130;
-    private static final Integer MULTIBUY_THRESHOLD_B = 45;
+    private static final Integer MULTIBUY_THRESHOLD_A = 3;
+    private static final Integer MULTIBUY_THRESHOLD_B = 2;
     private static final Integer MULTIBUY_THRESHOLD_C = null;
     private static final Integer MULTIBUY_THRESHOLD_D = null;
 
@@ -38,9 +38,9 @@ public class CheckoutSolution {
             long countOfProductD = countProduct(skus, PRODUCT_D);
 
             checkoutTotal = priceProduct(countOfProductA, UNIT_PRICE_A, MULTIBUY_THRESHOLD_A, MULTIBUY_PRICE_A )
-                    + priceProduct(countOfProductA, UNIT_PRICE_B, MULTIBUY_THRESHOLD_B, MULTIBUY_PRICE_B )
-                    + priceProduct(countOfProductA, UNIT_PRICE_C, MULTIBUY_THRESHOLD_C, MULTIBUY_PRICE_C )
-                    + priceProduct(countOfProductA, UNIT_PRICE_D, MULTIBUY_THRESHOLD_D, MULTIBUY_PRICE_D );
+                    + priceProduct(countOfProductB, UNIT_PRICE_B, MULTIBUY_THRESHOLD_B, MULTIBUY_PRICE_B )
+                    + priceProduct(countOfProductC, UNIT_PRICE_C, MULTIBUY_THRESHOLD_C, MULTIBUY_PRICE_C )
+                    + priceProduct(countOfProductD, UNIT_PRICE_D, MULTIBUY_THRESHOLD_D, MULTIBUY_PRICE_D );
 
         }
 
@@ -48,7 +48,7 @@ public class CheckoutSolution {
     }
 
 
-    private long countProduct( String skus, final int productId ){
+    public long countProduct( String skus, final int productId ){
         return skus.chars()
                 .filter(ch->ch==productId)
                 .count();

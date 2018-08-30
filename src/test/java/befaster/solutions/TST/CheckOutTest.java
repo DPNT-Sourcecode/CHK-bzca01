@@ -15,8 +15,13 @@ public class CheckOutTest {
         sol = new CheckoutSolution();
     }
 
+//    @Test
+//    public void testNonMutliBuy() {
+//        assertThat(sol.checkout("ABCD"), equalTo(115));
+//    }
+
     @Test
-    public void testNonMutliBuy() {
-        assertThat(sol.checkout("ABCD"), equalTo(115));
+    public void testCountProduct() {
+        assertThat(sol.countProduct("ABCD", 'A'), equalTo(1));
     }
 }
