@@ -15,18 +15,21 @@ public class CheckoutSolution {
     private static final int PRODUCT_C = 'C';
     private static final int PRODUCT_D = 'D';
     private static final int PRODUCT_E = 'E';
+    private static final int PRODUCT_F = 'F';
 
     private static final int UNIT_PRICE_A = 50;
     private static final int UNIT_PRICE_B = 30;
     private static final int UNIT_PRICE_C = 20;
     private static final int UNIT_PRICE_D = 15;
     private static final int UNIT_PRICE_E = 40;
+    private static final int UNIT_PRICE_F = 10;
 
     private static Map<Integer,Integer> MULTIBUYS_A = new HashMap<>();
     private static Map<Integer,Integer> MULTIBUYS_B = new HashMap<>();
     private static Map<Integer,Integer> MULTIBUYS_C = new HashMap<>();
     private static Map<Integer,Integer> MULTIBUYS_D = new HashMap<>();
     private static Map<Integer,Integer> MULTIBUYS_E = new HashMap<>();
+    private static Map<Integer,Integer> MULTIBUYS_F = new HashMap<>();
 
     public CheckoutSolution(){
         MULTIBUYS_A.put(3,130);
@@ -46,6 +49,7 @@ public class CheckoutSolution {
             long countOfProductC = countProduct(skus, PRODUCT_C);
             long countOfProductD = countProduct(skus, PRODUCT_D);
             long countOfProductE = countProduct(skus, PRODUCT_E);
+            long countOfProductF = countProduct(skus, PRODUCT_F);
 
             long countFreeGifts = countOfProductE / 2;
 
@@ -53,12 +57,19 @@ public class CheckoutSolution {
                 countOfProductB = countOfProductB - countFreeGifts;
             }
 
+            countFreeGifts = countOfProductF / 3;
+
+            if( countFreeGifts > 0 ){
+                countOfProductF = countOfProductF - countFreeGifts;
+            }
+
 
             checkoutTotal = priceProduct(countOfProductA, UNIT_PRICE_A, MULTIBUYS_A )
                     + priceProduct(countOfProductB, UNIT_PRICE_B, MULTIBUYS_B )
                     + priceProduct(countOfProductC, UNIT_PRICE_C, MULTIBUYS_C )
                     + priceProduct(countOfProductD, UNIT_PRICE_D, MULTIBUYS_D )
-                    + priceProduct(countOfProductE, UNIT_PRICE_E, MULTIBUYS_E );
+                    + priceProduct(countOfProductE, UNIT_PRICE_E, MULTIBUYS_E )
+                    + priceProduct(countOfProductF, UNIT_PRICE_F, MULTIBUYS_F );
 
         }
 
@@ -74,7 +85,7 @@ public class CheckoutSolution {
 
     private long countInvalidProducts( String skus ){
         return skus.chars()
-                .filter(ch->!(ch==PRODUCT_A || ch==PRODUCT_B || ch==PRODUCT_C || ch==PRODUCT_D || ch==PRODUCT_E) )
+                .filter(ch->!(ch==PRODUCT_A || ch==PRODUCT_B || ch==PRODUCT_C || ch==PRODUCT_D || ch==PRODUCT_E | ch==PRODUCT_F) )
                 .count();
     }
 

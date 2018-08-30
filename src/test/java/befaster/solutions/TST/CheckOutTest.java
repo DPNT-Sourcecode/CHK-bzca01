@@ -103,7 +103,7 @@ public class CheckOutTest {
 
     @Test
     public void testAll() {
-        assertThat(sol.checkout("ABCDE"), equalTo(155));
+        assertThat(sol.checkout("ABCDEF"), equalTo(165));
     }
 
     @Test
