@@ -108,6 +108,11 @@ public class CheckOutTest {
 
     @Test
     public void testEEB() {
-        assertThat(sol.checkout("EEB"), equalTo(40));
+        assertThat(sol.checkout("EEB"), equalTo(80));
+    }
+
+    @Test
+    public void testEE() {
+        assertThat(sol.checkout("EE"), equalTo(80));
     }
 }

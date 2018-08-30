@@ -51,8 +51,6 @@ public class CheckoutSolution {
 
             if( countFreeGifts > 0 ){
                 countOfProductB = countOfProductB - countFreeGifts;
-
-                countOfProductE = countOfProductE / 2;
             }
 
 
