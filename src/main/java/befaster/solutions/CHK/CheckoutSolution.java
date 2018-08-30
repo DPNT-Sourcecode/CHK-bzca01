@@ -91,7 +91,7 @@ public class CheckoutSolution {
                 for(int i = 0; i<intKeys.length; i++ ){
                     int numMultiBuys = iCount / intKeys[i];
                     int nonQualifying = iCount % intKeys[i];
-                    price = price.intValue() + multiBuys.get(intKeys);
+                    price = price.intValue() + multiBuys.get(intKeys[i]);
                     iCount = iCount - numMultiBuys;
                 }
 

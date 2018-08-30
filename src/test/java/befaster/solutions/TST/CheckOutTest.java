@@ -4,6 +4,9 @@ import befaster.solutions.CHK.CheckoutSolution;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -32,26 +35,32 @@ public class CheckOutTest {
 
     @Test
     public void testUnitPrice() {
-        assertThat(sol.priceProduct(1, 10, null, 1), equalTo(10));
+        assertThat(sol.priceProduct(1, 10, new HashMap<>()), equalTo(10));
     }
 
     @Test
     public void testMultiPrice() {
-        assertThat(sol.priceProduct(2, 10, null, 1), equalTo(20));
+        assertThat(sol.priceProduct(2, 10, new HashMap<>()), equalTo(20));
     }
 
     @Test
     public void testMultiPriceBelowThreshold() {
-        assertThat(sol.priceProduct(2, 10, 3, 15), equalTo(20));
+        Map<Integer,Integer> multiBuys = new HashMap<>();
+        multiBuys.put(3,25);
+        assertThat(sol.priceProduct(2, 10, multiBuys), equalTo(20));
     }
 
     @Test
     public void testMultiPriceEqualThreshold() {
-        assertThat(sol.priceProduct(3, 10, 3, 15), equalTo(15));
+        Map<Integer,Integer> multiBuys = new HashMap<>();
+        multiBuys.put(3,20);
+        assertThat(sol.priceProduct(3, 10, multiBuys), equalTo(20));
     }
 
     @Test
     public void testMultiPriceOneOverThreshold() {
-        assertThat(sol.priceProduct(4, 10, 3, 15), equalTo(25));
+        Map<Integer,Integer> multiBuys = new HashMap<>();
+        multiBuys.put(3,15);
+        assertThat(sol.priceProduct(4, 10, multiBuys), equalTo(25));
     }
 }
