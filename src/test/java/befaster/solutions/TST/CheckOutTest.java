@@ -63,4 +63,36 @@ public class CheckOutTest {
         multiBuys.put(3,15);
         assertThat(sol.priceProduct(4, 10, multiBuys), equalTo(25));
     }
+
+    @Test
+    public void testMultiPriceTwoThresholds() {
+        Map<Integer,Integer> multiBuys = new HashMap<>();
+        multiBuys.put(5,30);
+        multiBuys.put(3,20);
+        assertThat(sol.priceProduct(5, 10, multiBuys), equalTo(30));
+    }
+
+    @Test
+    public void testMultiPriceTwoThresholds2() {
+        Map<Integer,Integer> multiBuys = new HashMap<>();
+        multiBuys.put(5,30);
+        multiBuys.put(3,20);
+        assertThat(sol.priceProduct(6, 10, multiBuys), equalTo(40));
+    }
+
+    @Test
+    public void testMultiPriceTwoThresholds3() {
+        Map<Integer,Integer> multiBuys = new HashMap<>();
+        multiBuys.put(5,30);
+        multiBuys.put(3,20);
+        assertThat(sol.priceProduct(8, 10, multiBuys), equalTo(50));
+    }
+
+    @Test
+    public void testMultiPriceTwoThresholds4() {
+        Map<Integer,Integer> multiBuys = new HashMap<>();
+        multiBuys.put(5,30);
+        multiBuys.put(3,20);
+        assertThat(sol.priceProduct(9, 10, multiBuys), equalTo(60));
+    }
 }
