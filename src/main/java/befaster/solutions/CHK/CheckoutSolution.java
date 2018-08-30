@@ -163,32 +163,38 @@ public class CheckoutSolution {
 
             //////////
             // Free Gifts
-            long countFreeGifts = countOfProductE / 2;
-            if( countFreeGifts > 0 ){
-                countOfProductB = countOfProductB - countFreeGifts;
-            }
+//            long countFreeGifts = countOfProductE / 2;
+//            if( countFreeGifts > 0 ){
+//                countOfProductB = countOfProductB - countFreeGifts;
+//            }
+            countOfProductB = processFreeGift( countOfProductE, 2, countOfProductB);
+            countOfProductM = processFreeGift( countOfProductN, 3, countOfProductM);
+            countOfProductQ = processFreeGift( countOfProductR, 3, countOfProductQ);
 
-            countFreeGifts = countOfProductN / 3;
-            if( countFreeGifts > 0 ){
-                countOfProductM = countOfProductM - countFreeGifts;
-            }
-
-            countFreeGifts = countOfProductR / 3;
-            if( countFreeGifts > 0 ){
-                countOfProductQ = countOfProductQ - countFreeGifts;
-            }
+//            countFreeGifts = countOfProductN / 3;
+//            if( countFreeGifts > 0 ){
+//                countOfProductM = countOfProductM - countFreeGifts;
+//            }
+//
+//            countFreeGifts = countOfProductR / 3;
+//            if( countFreeGifts > 0 ){
+//                countOfProductQ = countOfProductQ - countFreeGifts;
+//            }
 
             ///////////
             // BOG OFFS
-            countFreeGifts = countOfProductF / 3;
-            if( countFreeGifts > 0 ){
-                countOfProductF = countOfProductF - countFreeGifts;
-            }
-
-            countFreeGifts = countOfProductU / 4;
-            if( countFreeGifts > 0 ){
-                countOfProductU = countOfProductU - countFreeGifts;
-            }
+//            countFreeGifts = countOfProductF / 3;
+//            if( countFreeGifts > 0 ){
+//                countOfProductF = countOfProductF - countFreeGifts;
+//            }
+//
+//            countFreeGifts = countOfProductU / 4;
+//            if( countFreeGifts > 0 ){
+//                countOfProductU = countOfProductU - countFreeGifts;
+//            }
+//
+            countOfProductF = processBOGOff(countOfProductF, 3 );
+            countOfProductU = processBOGOff(countOfProductU, 4 );
 
             checkoutTotal = priceProduct(countOfProductA, UNIT_PRICE_A, MULTIBUYS_A )
                     + priceProduct(countOfProductB, UNIT_PRICE_B, MULTIBUYS_B )
@@ -221,6 +227,22 @@ public class CheckoutSolution {
         }
 
         return checkoutTotal;
+    }
+
+    private long processFreeGift( long prodA, long threshold, long targetProd ){
+        long countFreeGifts = prodA / threshold;
+        if( countFreeGifts > 0 ){
+            targetProd = targetProd - countFreeGifts;
+        }
+        return targetProd;
+    }
+
+    private long processBOGOff( long prodA, long threshold ){
+        long countFreeGifts = prodA / threshold;
+        if( countFreeGifts > 0 ){
+            prodA = prodA - countFreeGifts;
+        }
+        return prodA;
     }
 
 
