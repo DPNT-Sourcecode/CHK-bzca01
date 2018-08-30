@@ -115,4 +115,22 @@ public class CheckOutTest {
     public void testEE() {
         assertThat(sol.checkout("EE"), equalTo(80));
     }
+
+    @Test
+    public void testFFF() {
+        assertThat(sol.checkout("FFF"), equalTo(20));
+    }
+
+    @Test
+    public void testFFFF() {
+        assertThat(sol.checkout("FFFF"), equalTo(30));
+    }
+    @Test
+    public void testFFFFF() {
+        assertThat(sol.checkout("FFFFF"), equalTo(40));
+    }
+    @Test
+    public void testFFFFFF() {
+        assertThat(sol.checkout("FFFFFF"), equalTo(40));
+    }
 }
