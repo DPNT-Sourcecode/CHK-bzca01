@@ -3,6 +3,7 @@ package befaster.solutions.CHK;
 import befaster.runner.SolutionNotImplementedException;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -86,7 +87,7 @@ public class CheckoutSolution {
             if( !multiBuys.isEmpty() ){
 
                 Integer[] intKeys = multiBuys.keySet().toArray(new Integer[]{});
-                Arrays.sort(intKeys);
+                Arrays.sort(intKeys, Collections.reverseOrder());
 
                 for(int i = 0; i<intKeys.length; i++ ){
                     int key = intKeys[i];
