@@ -89,10 +89,12 @@ public class CheckoutSolution {
                 Arrays.sort(intKeys);
 
                 for(int i = 0; i<intKeys.length; i++ ){
-                    int numMultiBuys = iCount / intKeys[i];
-                    int nonQualifying = iCount % intKeys[i];
-                    price = price.intValue() + multiBuys.get(intKeys[i]);
-                    iCount = iCount - numMultiBuys;
+                    int key = intKeys[i];
+                    int numMultiBuys = iCount / key;
+                    if( numMultiBuys > 0 ) {
+                        price = price.intValue() + multiBuys.get(key);
+                        iCount = iCount - numMultiBuys;
+                    }
                 }
 
                 price = price + (iCount*unitPrice.intValue());
