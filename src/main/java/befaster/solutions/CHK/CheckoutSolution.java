@@ -11,5 +11,5 @@ public class CheckoutSolution {
         throw new SolutionNotImplementedException();
     }
 
-    private boolean 
+    private boolean
 }
