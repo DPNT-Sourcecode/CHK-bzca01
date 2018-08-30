@@ -58,7 +58,7 @@ public class CheckoutSolution {
                     + priceProduct(countOfProductB, UNIT_PRICE_B, MULTIBUYS_B )
                     + priceProduct(countOfProductC, UNIT_PRICE_C, MULTIBUYS_C )
                     + priceProduct(countOfProductD, UNIT_PRICE_D, MULTIBUYS_D )
-                    + priceProduct(countOfProductE, UNIT_PRICE_D, MULTIBUYS_E );
+                    + priceProduct(countOfProductE, UNIT_PRICE_E, MULTIBUYS_E );
 
         }
 
