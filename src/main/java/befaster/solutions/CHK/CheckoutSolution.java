@@ -5,15 +5,46 @@ import befaster.runner.SolutionNotImplementedException;
 import java.util.function.Predicate;
 
 public class CheckoutSolution {
+
+    private static final int PRODUCT_A = 'A';
+    private static final int PRODUCT_B = 'B';
+    private static final int PRODUCT_C = 'C';
+    private static final int PRODUCT_D = 'D';
+
+    private static final int UNIT_PRICE_A = 50;
+    private static final int UNIT_PRICE_B = 30;
+    private static final int UNIT_PRICE_C = 20;
+    private static final int UNIT_PRICE_D = 15;
+
+    private static final int MULTIBUY_PRICE_A = 130;
+    private static final int MULTIBUY_PRICE_B = 45;
+    private static final int MULTIBUY_PRICE_C = 20;
+    private static final int MULTIBUY_PRICE_D = 12;
+
+    private static final Integer MULTIBUY_THRESHOLD_A = 130;
+    private static final Integer MULTIBUY_THRESHOLD_B = 45;
+    private static final Integer MULTIBUY_THRESHOLD_C = null;
+    private static final Integer MULTIBUY_THRESHOLD_D = null;
+
     public Integer checkout(String skus) {
 
-        long countOfProductA = countProduct(skus, 'A');
-        long countOfProductB = countProduct(skus, 'B');
-        long countOfProductC = countProduct(skus, 'C');
-        long countOfProductD = countProduct(skus, 'D');
+        Integer checkoutTotal = Integer.valueOf(-1);
 
+        if( countInvalidProducts(skus) == 0 ){
 
-        throw new SolutionNotImplementedException();
+            long countOfProductA = countProduct(skus, PRODUCT_A);
+            long countOfProductB = countProduct(skus, PRODUCT_B);
+            long countOfProductC = countProduct(skus, PRODUCT_C);
+            long countOfProductD = countProduct(skus, PRODUCT_D);
+
+            checkoutTotal = priceProduct(countOfProductA, UNIT_PRICE_A, MULTIBUY_THRESHOLD_A, MULTIBUY_PRICE_A )
+                    + priceProduct(countOfProductA, UNIT_PRICE_B, MULTIBUY_THRESHOLD_B, MULTIBUY_PRICE_B )
+                    + priceProduct(countOfProductA, UNIT_PRICE_C, MULTIBUY_THRESHOLD_C, MULTIBUY_PRICE_C )
+                    + priceProduct(countOfProductA, UNIT_PRICE_D, MULTIBUY_THRESHOLD_D, MULTIBUY_PRICE_D );
+
+        }
+
+        return checkoutTotal;
     }
 
 
@@ -21,5 +52,31 @@ public class CheckoutSolution {
         return skus.chars()
                 .filter(ch->ch==productId)
                 .count();
+    }
+
+    private long countInvalidProducts( String skus ){
+        return skus.chars()
+                .filter(ch->!(ch==PRODUCT_A || ch==PRODUCT_B || ch==PRODUCT_C || ch==PRODUCT_D) )
+                .count();
+    }
+
+    private Integer priceProduct( long count , Integer unitPrice, Integer multiBuyNumber, Integer multiBuyPrice ){
+        Integer price = Integer.valueOf(0);
+
+        int iCount = (int)count;
+
+        if( count > 0 ){
+            if( multiBuyNumber != null ){
+                int numMultiBuys = iCount / multiBuyNumber.intValue();
+                int nonQualifying = iCount % multiBuyNumber.intValue();
+
+                price = Integer.valueOf((numMultiBuys*multiBuyPrice.intValue()) + (nonQualifying+unitPrice.intValue()));
+            }
+            else{
+                price = Integer.valueOf( iCount * unitPrice.intValue() );
+            }
+        }
+
+        return price;
     }
 }

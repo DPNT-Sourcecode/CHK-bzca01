@@ -1,21 +1,22 @@
 package befaster.solutions.TST;
 
+import befaster.solutions.CHK.CheckoutSolution;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class OneTest {
-    private One one;
+public class CheckOutTest {
+    private CheckoutSolution sol;
 
     @Before
     public void name() {
-        one = new One();
+        sol = new CheckoutSolution();
     }
 
     @Test
-    public void run() {
-        assertThat(one.apply(), equalTo(1));
+    public void testNonMutliBuy() {
+        assertThat(sol.checkout("ABCD"), equalTo(115));
     }
 }
