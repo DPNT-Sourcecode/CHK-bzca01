@@ -140,7 +140,7 @@ public class CheckOutTest {
     }
 
     @Test
-    public void testXYZ() {
-        assertThat(sol.checkout("XYZ"), equalTo(45));
+    public void testZZT() {
+        assertThat(sol.checkout("ZZT"), equalTo(45));
     }
 }

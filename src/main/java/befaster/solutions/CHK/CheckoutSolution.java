@@ -218,7 +218,10 @@ public class CheckoutSolution {
                 if( groupDiscounts >0 ){
                     long tmp = (countOfProductS +countOfProductT + countOfProductY + carriedForward ) / 3;
                     if( tmp > 0 ){
-                        checkoutTotal = checkoutTotal - ((int)(tmp*3*UNIT_PRICE_S));
+                        if( carriedForward > 0 ){
+                            checkoutTotal = checkoutTotal - ((int)(carriedForward*UNIT_PRICE_Z));
+                        }
+                        checkoutTotal = checkoutTotal - ((int)(((tmp*3) - carriedForward)*UNIT_PRICE_S));
                         groupDiscounts = groupDiscounts - tmp;
                     }
                     carriedForward = (countOfProductS +countOfProductT + countOfProductY + carriedForward ) % 3;
@@ -227,7 +230,10 @@ public class CheckoutSolution {
                 if( groupDiscounts >0 ){
                     long tmp = (countOfProductX + carriedForward ) / 3;
                     if( tmp > 0 ){
-                        checkoutTotal = checkoutTotal - ((int)(tmp*3*UNIT_PRICE_X));
+                        if( carriedForward > 0 ){
+                            checkoutTotal = checkoutTotal - ((int)(carriedForward*UNIT_PRICE_S));
+                        }
+                        checkoutTotal = checkoutTotal - ((int)(((tmp*3) - carriedForward)*UNIT_PRICE_X));
                         groupDiscounts = groupDiscounts - tmp;
                     }
                 }
