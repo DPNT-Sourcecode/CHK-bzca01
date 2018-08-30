@@ -216,24 +216,19 @@ public class CheckoutSolution {
                 }
                 // s t y
                 if( groupDiscounts >0 ){
-                    if( countOfProductS <= groupDiscounts ){
-                        checkoutTotal = checkoutTotal - ((int)(countOfProductS*UNIT_PRICE_S));
-                        groupDiscounts = groupDiscounts - countOfProductS;
+                    long tmp = (countOfProductS +countOfProductT + countOfProductY + carriedForward ) / 3;
+                    if( tmp > 0 ){
+                        checkoutTotal = checkoutTotal - ((int)(tmp*3*UNIT_PRICE_S));
+                        groupDiscounts = groupDiscounts - tmp;
                     }
-                    else{
-                        checkoutTotal = checkoutTotal - ((int)(groupDiscounts*UNIT_PRICE_S));
-                        groupDiscounts = 0;
-                    }
+                    carriedForward = (countOfProductS +countOfProductT + countOfProductY + carriedForward ) % 3;
                 }
                 // x
                 if( groupDiscounts >0 ){
-                    if( countOfProductX <= groupDiscounts ){
-                        checkoutTotal = checkoutTotal - ((int)(countOfProductX*UNIT_PRICE_X));
-                        groupDiscounts = groupDiscounts - countOfProductX;
-                    }
-                    else{
-                        checkoutTotal = checkoutTotal - ((int)(groupDiscounts*UNIT_PRICE_X));
-                        groupDiscounts = 0;
+                    long tmp = (countOfProductX + carriedForward ) / 3;
+                    if( tmp > 0 ){
+                        checkoutTotal = checkoutTotal - ((int)(tmp*3*UNIT_PRICE_X));
+                        groupDiscounts = groupDiscounts - tmp;
                     }
                 }
 
