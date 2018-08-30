@@ -169,6 +169,9 @@ public class CheckoutSolution {
             // process group discount
             long groupDiscounts = (countOfProductS + countOfProductT + countOfProductX + countOfProductY + countOfProductZ) / 3;
             if( groupDiscounts > 0 ){
+
+
+
                 checkoutTotal = checkoutTotal - ((int)(groupDiscounts*45));
             }
         }
