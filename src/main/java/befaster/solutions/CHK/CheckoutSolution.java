@@ -47,7 +47,7 @@ public class CheckoutSolution {
             long countOfProductD = countProduct(skus, PRODUCT_D);
             long countOfProductE = countProduct(skus, PRODUCT_E);
 
-            long countFreeGifts = countOfProductE % 2;
+            long countFreeGifts = countOfProductE / 2;
 
             if( countFreeGifts > 0 ){
                 countOfProductB = countOfProductB - countFreeGifts;
