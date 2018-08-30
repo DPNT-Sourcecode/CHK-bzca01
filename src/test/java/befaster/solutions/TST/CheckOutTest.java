@@ -95,4 +95,19 @@ public class CheckOutTest {
         multiBuys.put(3,20);
         assertThat(sol.priceProduct(9, 10, multiBuys), equalTo(60));
     }
+
+    @Test
+    public void testE() {
+        assertThat(sol.checkout("E"), equalTo(40));
+    }
+
+    @Test
+    public void testAll() {
+        assertThat(sol.checkout("ABCDE"), equalTo(155));
+    }
+
+    @Test
+    public void testEEB() {
+        assertThat(sol.checkout("EEB"), equalTo(40));
+    }
 }

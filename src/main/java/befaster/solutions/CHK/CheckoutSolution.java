@@ -31,6 +31,8 @@ public class CheckoutSolution {
     public CheckoutSolution(){
         MULTIBUYS_A.put(3,130);
         MULTIBUYS_A.put(5,200);
+
+        MULTIBUYS_B.put(2,45);
     }
 
     public Integer checkout(String skus) {
